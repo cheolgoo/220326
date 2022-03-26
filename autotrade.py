@@ -79,9 +79,9 @@ while True:
                     balance     = upbit.get_balance("KRW")
 
                     # 10% buy operation
+                    buy_vol[0]      = balance * 0.1 / pyupbit.get_current_price("KRW-BTG")
                     upbit.buy_market_order("KRW-BTG", balance * 0.1)
                     buy_price[0]    = pyupbit.get_current_price("KRW-BTG")
-                    buy_vol[0]      = balance * 0.1 / pyupbit.get_current_price("KRW-BTG")
                     buy_count[0]    = 1 
                     buy_num[0]      = 1 
 
@@ -97,9 +97,9 @@ while True:
                     balance     = upbit.get_balance("KRW")
                     
                     # 90% buy operation
-                    upbit.buy_market_order("KRW-BTG", balance * 0.9)
-                    buy_price[new]      = pyupbit.get_current_price("KRW-BTG")
                     buy_vol[new]        = balance * 0.9 / pyupbit.get_current_price("KRW-BTG")
+                    upbit.buy_market_order("KRW-BTG", balance * 0.9)
+                    buy_price[new]      = pyupbit.get_current_price("KRW-BTG")                    
                     buy_count[new]      = 1 
                     buy_num[new]        = 1 
                     
@@ -115,9 +115,9 @@ while True:
                     balance     = upbit.get_balance("KRW")
 
                     # 100% buy operation
+                    buy_vol[new]        = balance* 99.8/100 /pyupbit.get_current_price("KRW-BTG")
                     upbit.buy_market_order("KRW-BTG", balance* 99.8/100)
                     buy_price[new]      = pyupbit.get_current_price("KRW-BTG")
-                    buy_vol[new]        = balance* 99.8/100 /pyupbit.get_current_price("KRW-BTG")
                     buy_count[new]      = 1 
                     buy_num[new]        = 1 
 
@@ -129,6 +129,7 @@ while True:
                 if ( close > buy_price[0] * (1 + up0) or buy_num[0] >= num_limit0 ) :
                     
                     # buy_vol[0] 만큼 sell operation
+                    
                     upbit.sell_market_order("KRW-BTG", buy_vol[0]*0.999)
                     
                     count           = 0 
