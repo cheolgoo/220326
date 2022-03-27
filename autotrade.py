@@ -191,6 +191,11 @@ while True:
                     
             if ( upbit.get_balance("KRW-BTG") < 0.4) :
                 upbit.buy_market_order("KRW-BTG", pyupbit.get_current_price("KRW-BTG"))
+            
+            if ( np.sum(buy_count) == 0 and upbit.get_balance("KRW-BTG") > 1.3) :
+                left = upbit.get_balance("KRW-BTG")
+                upbit.sell_market_order("KRW-BTG", left - 1)
+            
                  
 
 
