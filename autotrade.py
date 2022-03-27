@@ -22,18 +22,18 @@ buy_num     = np.array([0, 0, 0])
 count       = 0 
 
 
-up0         = 0.53/ 100 
-up1         = 0.90/100 
-up2         = 0.51/100 
+up0         = 0.69/ 100 
+up1         = 0.93/100 
+up2         = 0.1/100 
 num_limit0  = 1.7* 60 /5  
 num_limit1  = 1.94* 60 /5 
-num_limit2  =  3* 60 /5 
+num_limit2  =  2* 60 /5 
 
-tic_perc    = 0.031 / 100
+tic_perc    = 0.035 / 100
 
 n_count     = 4
-bigone      = 9.41
-tic_init    = -0.4
+bigone      = 9.8
+tic_init    = -0.3
 
 
 # time check 초기화
@@ -192,7 +192,7 @@ while True:
             if ( upbit.get_balance("KRW-BTG") < 0.4) :
                 upbit.buy_market_order("KRW-BTG", pyupbit.get_current_price("KRW-BTG"))
             
-            if ( np.sum(buy_count) == 0 and upbit.get_balance("KRW-BTG") > 1.3) :
+            if ( np.sum(buy_count) == 0 and upbit.get_balance("KRW-BTG") > 2) :
                 left = upbit.get_balance("KRW-BTG")
                 upbit.sell_market_order("KRW-BTG", left - 1)
             
